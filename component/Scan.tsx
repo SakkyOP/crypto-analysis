@@ -2,38 +2,7 @@ import React, { useState, useRef } from "react";
 import {QrReader, QrReaderProps } from "react-qr-reader";
 import decodeQRCodeFromImage  from 'jsqr';
 
-// type Props = {}
-
-// const Scan = (props: Props) => {
-    
-//     const [data, setData] = useState("No result");
-
-//     const onResult={(result, error) => {
-//         if (!!result) {
-//           setData(result?.text);
-//         }
-
-//         if (!!error) {
-//           console.info(error);
-//         }
-//       }}
-
-//     return (
-//         // <div>Scan</div>
-//         <div>
-//         <QrReader
-//             scanDelay={300}
-//             // onError={handleError}
-//             onResult={handleScan}
-//             style={{ width: '100%' }}
-//         />
-//       {data && <p>Link: {data}</p>}
-//     </div>
-        
-//     )
-// }
-
-const Test: React.FC = () => {
+const Scan: React.FC = () => {
     const [data, setData] = useState<string>('No result');
     const [input, setInput] = useState<string>('');
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -97,4 +66,4 @@ const Test: React.FC = () => {
     );
   };
   
-  export default Test;
+  export default Scan;
