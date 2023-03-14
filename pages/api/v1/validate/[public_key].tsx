@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { public_key } = query;
 
     return axios.post(
-        `https://rest.cryptoapis.io/blockchain-tools/${body.blockchain}/testnet/addresses/validate`,
+        `https://rest.cryptoapis.io/blockchain-tools/${body.blockchain}/${body.network}/addresses/validate`,
         {
             context: "Public Key Validation",
             data: {
