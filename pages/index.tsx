@@ -1,6 +1,6 @@
 import React from 'react'
-import Text from '../component/text'
-import Scan from '../component/scan'
+import Text from '../component/Text'
+import Scan from '../component/Scan'
 
 type Props = {}
 
