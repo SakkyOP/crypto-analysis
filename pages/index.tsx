@@ -7,9 +7,9 @@ type Props = {}
 const Home = (props: Props) => {
   return (
     <>
-    Home
-    <Text />
-    <Scan />
+      Home
+      <Text />
+      <Scan />
     </>   
   )
 }
