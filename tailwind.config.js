@@ -9,7 +9,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+		fontFamily: {
+			'Rubik': ['Rubik' , 'sans-serif'],
+			'Poppins': ['Poppins', 'sans-serif'],
+			
+		  },
+	},
   },
   plugins: [],
 }

@@ -35,7 +35,7 @@ export default function Text() {
 		setShouldFetch(false);
 	}
 	return (
-		<Box className="flex justify-center items-center h-screen">
+		<Box className="flex justify-center items-center h-screen text-white">
 			<Stack className="w-auto">
 				{/* Add Loading component in this:  (Remove <div>... and replace with the loading component) */}
 				{isLoading? <div> <p> Loading... Please Wait </p> </div> : null}
@@ -44,9 +44,9 @@ export default function Text() {
 				{error? <div> <p> {error.message} </p> </div> : null}
 
 				{/* This is the response component return value is mentioned in Docs */}
-				{response && response ? <h1>{ response.cryptocurrency.length > 3? null : <span> <CryptoIcon name={`${response.cryptocurrency.toLowerCase()}`}/> </span> } { response.cryptocurrency }</h1> : null}
+				{response && response ? <h1>{ response.cryptocurrency.length > 3? null : <span> <CryptoIcon style={"white"} name={`${response.cryptocurrency.toLowerCase()}`}/> </span> } { response.cryptocurrency }</h1> : null}
 				
-				<Input placeholder="Enter Public Key Here" value={public_key} onChange={(event: React.ChangeEvent<HTMLTextAreaElement>)=>setPublicKey(event.target.value)} required/>
+				<Input className="text-white placeholder:textwhite" placeholder="Enter Public Key Here" value={public_key} onChange={(event: React.ChangeEvent<HTMLTextAreaElement>)=>setPublicKey(event.target.value)} required/>
 				<Button onClick={()=>{setShouldFetch(true)}}>Check</Button>
 			</Stack>
 		</Box>

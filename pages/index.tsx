@@ -1,19 +1,17 @@
 import React, { Fragment } from 'react'
-import Text from '../component/Text'
-import Scan from '../component/Scan'
-import LandingPage from '../component/LandingPage'
+import Text from '../components/Text'
+import Scan from '../components/Scan'
+import LandingPage from '../components/LandingPage'
 
 type Props = {}
 
 const Home = (props: Props) => {
   return (
-    <Fragment>
+    <div className='h-screen w-screen relative bg-[#1E1E1E] text-white overflow-hidden'>
       <LandingPage/>
-      Home
-      <Text />
-      <Scan />
-    </Fragment>   
+      <Text/>
+      <Scan/>
+    </div>
   )
 }
-
 export default Home

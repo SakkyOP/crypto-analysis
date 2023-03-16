@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('/fonts/RubikGlitch.ttf');
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins.ttf');
+}
