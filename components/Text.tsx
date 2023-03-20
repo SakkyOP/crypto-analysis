@@ -44,8 +44,9 @@ export default function Text() {
 				{error? <div> <p> {error.message} </p> </div> : null}
 
 				{/* This is the response component return value is mentioned in Docs */}
-				{response && response ? <h1>{ response.cryptocurrency.length > 3? null : <span> <CryptoIcon style={"white"} name={`${response.cryptocurrency.toLowerCase()}`}/> </span> } { response.cryptocurrency }</h1> : null}
-				
+				<div className="flex justify-center items-center">
+				{response && response ? <h1 className="flex text-2xl">{ response.cryptocurrency.length > 3? null : <span> <CryptoIcon  style={"white"} name={`${response.cryptocurrency.toLowerCase()}`}/> </span> } <p className="pl-2 mb-[2px] pb-[2px]"> { response.cryptocurrency } </p></h1> : null}
+				</div>
 				<Input className="text-white placeholder:textwhite" placeholder="Enter Public Key Here" value={public_key} onChange={(event: React.ChangeEvent<HTMLTextAreaElement>)=>setPublicKey(event.target.value)} required/>
 				<Button onClick={()=>{setShouldFetch(true)}}>Check</Button>
 			</Stack>
