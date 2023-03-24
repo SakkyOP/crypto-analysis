@@ -4,7 +4,8 @@ import useSWR from "swr"
 import { Input, Button, Box, Stack } from "@mui/material"
 import { validationResponse } from "../pages/api/v1/validate/[public_key]"
 import { detectorResponse } from "../pages/api/v1/detector/[address]"
-import { CryptoIcon } from "next-crypto-icons"
+import { Cryptocon } from "cryptocons"
+import cryptos from './cryptos.json'
 
 
 export default function Text() {
@@ -45,7 +46,7 @@ export default function Text() {
 
 				{/* This is the response component return value is mentioned in Docs */}
 				<div className="flex justify-center items-center">
-				{response && response ? <h1 className="flex text-lg">{ response.cryptocurrency.length > 3? null : <span> <CryptoIcon  style={"white"} name={`${response.cryptocurrency.toLowerCase()}`}/> </span> } <p className="pl-2 mb-[2px] pb-[2px]"> { response.cryptocurrency } </p></h1> : null}
+				{response && response ? <h1 className="flex text-lg">{ response.cryptocurrency.length > 3? null : <span> <Cryptocon size={25} badgeRadius={100} icon={cryptos[response.cryptocurrency]} /> </span> } <p className="pl-2 mb-[2px] pb-[2px]"> { response.cryptocurrency } </p></h1> : null}
 				</div>
 				<Input className="text-white w-[15rem] placeholder:textwhite" placeholder="Enter Public Key Here" value={public_key} onChange={(event: React.ChangeEvent<HTMLTextAreaElement>)=>setPublicKey(event.target.value)} required/>
 				<Button onClick={()=>{setShouldFetch(true)}}>Check</Button>

@@ -1,0 +1,9 @@
+{
+    "BTC": "BitcoinBadge",
+    "ETH": "EthereumBadge",
+    "LTC": "LitecoinBadge",
+    "DOGE": "DogecoinBadge",
+    "DASH": "DashBadge",
+    "XMR": "Monero",
+    "BCH": "BitcoinCashBadge"
+}
