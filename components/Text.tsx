@@ -69,7 +69,7 @@ export default function Text() {
 							{response.cryptocurrency.length > 3 ? null : (
 								<span>
 									<Cryptocon
-										size={"1.5vw"}
+										size={"20rem"}
 										badgeRadius={100}
 										icon={cryptos[response.cryptocurrency]}
 									/>

@@ -9,7 +9,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     const { address } = req.query;
 
     addressDetector(address).then(cryptocurrency=>{
-        res.status(200).json({ cryptocurrency });
+        return res.status(200).json({ cryptocurrency });
     })
 }
 

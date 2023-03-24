@@ -4,6 +4,6 @@
     "LTC": "LitecoinBadge",
     "DOGE": "DogecoinBadge",
     "DASH": "DashBadge",
-    "XMR": "Monero",
+    "XMR": "MoneroBadge",
     "BCH": "BitcoinCashBadge"
 }
