@@ -10,12 +10,22 @@ module.exports = {
   ],
   theme: {
     extend: {
-		fontFamily: {
-			'Rubik': ['Rubik' , 'sans-serif'],
-			'Poppins': ['Poppins', 'sans-serif'],
-			
-		  },
-	},
+      fontFamily: {
+        'Rubik': ['Rubik' , 'sans-serif'],
+        'Poppins': ['Poppins', 'sans-serif'],
+      
+      },
+      screens: {
+        'tablet': '640px',
+        // => @media (min-width: 640px) { ... }
+  
+        'md': '1200px',
+        // => @media (min-width: 1024px) { ... }
+  
+        'desktop': '1440px',
+        // => @media (min-width: 1280px) { ... }
+      },
+	  },
   },
   plugins: [],
 }
