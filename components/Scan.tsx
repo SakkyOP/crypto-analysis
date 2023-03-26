@@ -15,6 +15,10 @@ interface detectionStatus {
 
 const Scan: React.FC = () => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
+	
+	const [cameraMode, setCameraMode] = useState<boolean>(false);
+	const videoRef = useRef<HTMLVideoElement>(null);
+	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	const [detection, setDetection] = useState<detectionStatus | undefined>();
 	const [shouldFetch, setShouldFetch] = useState<boolean>(false)
@@ -41,16 +45,6 @@ const Scan: React.FC = () => {
 		});
 		setShouldFetch(false);
 	}
-	
-	const handleResult = (result: any, error: any) => {
-		if (!!result) {
-			handleData(result.text);
-		}
-
-		if (!!error) {
-			console.info(error.message);
-		}
-	};
 
 	const handleFileInputChange = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -80,7 +74,8 @@ const Scan: React.FC = () => {
 						imageData!.height
 					);
 					if (qrCode) {
-						handleData(qrCode.data);
+						setPublic_key(qrCode.data);
+						setShouldFetch(true);
 					} else {
 						console.info("QR code not found");
 					}
@@ -88,22 +83,6 @@ const Scan: React.FC = () => {
 			};
 		}
 	};
-
-	const handleData = (data: string) => {
-		setPublic_key( data );
-		setShouldFetch( true );
-	};
-
-	const qrReaderProps: QrReaderProps = {
-		onResult: handleResult,
-		constraints: {
-			facingMode: "environment",
-		},
-	};
-
-	const [imageSrc, setImageSrc] = useState<string | null>(null);
-	const videoRef = useRef<HTMLVideoElement>(null);
-	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	const captureImage = () => {
 		if (canvasRef.current && videoRef.current) {
@@ -115,7 +94,18 @@ const Scan: React.FC = () => {
 		
 			const context = canvasRef.current.getContext("2d");
 			context?.drawImage(videoRef.current, 0, 0, videoWidth, videoHeight);
-			setImageSrc(canvasRef.current.toDataURL("image/png"));
+			const imageData = context?.getImageData(0, 0, canvasRef.current.width, canvasRef.current.height);
+			const qrCode = decodeQRCodeFromImage(
+				imageData!.data,
+				imageData!.width,
+				imageData!.height
+			);
+			if (qrCode) {
+				setPublic_key(qrCode.data);
+				setShouldFetch(true);
+			} else {
+				console.info("QR code not found");
+			}
 		}
 	};
 
@@ -130,24 +120,15 @@ const Scan: React.FC = () => {
 			.catch((err) => {
 				console.log("Error:", err);
 			});
-	}, []);
+	}, [cameraMode]);
 
 	return (
 		<Fragment>
 			{/* FIX SIZE and MAKE IT PRESENTABLE */}
 			{/* Display only when opted using Camera Button */}
 
-			<video className="w-[16rem] mt-8  border-2 rounded-md" ref={videoRef} />
-
-			<canvas style={{display: "none"}} ref={canvasRef} />
-
-			<button className="text-3xl" onClick={captureImage}>📷</button>
-
-			<div className="flex flex-col justify-center items-center gap-4">
-				<div className="flex flex-row justify-center items-center py-8 gap-8">
-					<div className="">
-						<QrReader {...qrReaderProps} />
-					</div>
+			<div className="flex flex-col justify-center items-center">
+				<div className="flex flex-row justify-center items-center py-4 gap-8">
 					<label className="flex justify-center items-center mt-3 m-2 w-[8rem] h-[2.6rem] bg-[#FF3465] font-Poppins rounded-full hover:cursor-pointer">
 						Upload
 						<input
@@ -160,10 +141,19 @@ const Scan: React.FC = () => {
 						/>
 					</label>
 
-					<button className="flex justify-center items-center mt-3 m-2 w-[8rem] h-[2.6rem] bg-[#FF3465] font-Poppins rounded-full hover:cursor-pointer"> Camera </button>
+					<button className="flex justify-center items-center mt-3 m-2 w-[8rem] h-[2.6rem] bg-[#FF3465] font-Poppins rounded-full hover:cursor-pointer" onClick={()=>{setCameraMode(!cameraMode)}}> Camera </button>
 
 				</div>
 
+				{
+					cameraMode ? (
+						<Fragment>
+							<video className="w-[16rem] border-2 rounded-md" ref={videoRef} />
+							<button className="flex justify-center items-center mt-3 m-2 w-[8rem] h-[2.6rem] bg-[#FF3465] font-Poppins rounded-full hover:cursor-pointer" onClick={captureImage}>Analyze 🔍</button>
+						</Fragment>
+					) : null 
+				}
+	
 				{/* Add Loading component in this:  (Remove <div>... and replace with the loading component) */}
 				{isLoading ? (
 					<div>
@@ -192,6 +182,7 @@ const Scan: React.FC = () => {
 					</div>
 				</div>
 			</div>
+			<canvas style={{display: "none"}} ref={canvasRef} />
 		</Fragment>
 	);
 }
