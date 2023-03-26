@@ -101,34 +101,95 @@ const Scan: React.FC = () => {
 		},
 	};
 
+	const [imageSrc, setImageSrc] = useState<string | null>(null);
+	const videoRef = useRef<HTMLVideoElement>(null);
+	const canvasRef = useRef<HTMLCanvasElement>(null);
+
+	const captureImage = () => {
+		if (canvasRef.current && videoRef.current) {
+			const videoWidth = videoRef.current.videoWidth;
+			const videoHeight = videoRef.current.videoHeight;
+		
+			canvasRef.current.width = videoWidth;
+			canvasRef.current.height = videoHeight;
+		
+			const context = canvasRef.current.getContext("2d");
+			context?.drawImage(videoRef.current, 0, 0, videoWidth, videoHeight);
+			setImageSrc(canvasRef.current.toDataURL("image/png"));
+		}
+	};
+
+	React.useEffect(() => {
+		navigator.mediaDevices.getUserMedia({ video: true })
+			.then((stream) => {
+					if (videoRef.current) {
+						videoRef.current.srcObject = stream;
+						videoRef.current.play();
+					}
+				})
+			.catch((err) => {
+				console.log("Error:", err);
+			});
+	}, []);
+
 	return (
 		<Fragment>
 			{/* FIX SIZE and MAKE IT PRESENTABLE */}
 			{/* Display only when opted using Camera Button */}
-			<div className="w-40 h-20">
-				<QrReader {...qrReaderProps} />
-			</div>
-			<form>
-				<label>
-					Upload QR code image:
-					<input
-						type="file"
-						ref={fileInputRef}
-						onChange={handleFileInputChange}
-					/>
-				</label>
-			</form>
 
-			<div className="mt-[-1rem] px-20 max-md:px-10">
-				<div className="text-[1.6rem] mb-2">Discription:</div>
-				<div className=" w-[28rem] max-md:w-[20rem] px-6 py-4 h-[16rem] border-2 rounded-md">
-					<div className="flex p-2 text-[1.4rem]">
-						<p className="mr-2">Status:</p> { detection && detection ? (
-							<p className={`${ detection.isDetected ? "text-green-400" : "text-red-600" }`}> { detection.isDetected ? "Detected" : "Not Detected"} </p>
-						) : null }
+			<video className="w-[16rem] mt-8  border-2 rounded-md" ref={videoRef} />
+
+			<canvas style={{display: "none"}} ref={canvasRef} />
+
+			<button className="text-3xl" onClick={captureImage}>📷</button>
+
+			<div className="flex flex-col justify-center items-center gap-4">
+				<div className="flex flex-row justify-center items-center py-8 gap-8">
+					<div className="">
+						<QrReader {...qrReaderProps} />
 					</div>
-					<div className="flex p-2 text-[1.4rem]"><p className="mr-2">Crypto Icon:</p><div className="mt-[-0.4rem]">{ detection && detection.icon }</div> </div>
-					<div className="flex p-2 text-[1.4rem]"><p className="mr-2">Crypto Name:</p><p>{ detection && detection.name }</p></div>
+					<label className="flex justify-center items-center mt-3 m-2 w-[8rem] h-[2.6rem] bg-[#FF3465] font-Poppins rounded-full hover:cursor-pointer">
+						Upload
+						<input
+							style={{
+								display: "none"
+							}}
+							type="file"
+							ref={fileInputRef}
+							onChange={handleFileInputChange}
+						/>
+					</label>
+
+					<button className="flex justify-center items-center mt-3 m-2 w-[8rem] h-[2.6rem] bg-[#FF3465] font-Poppins rounded-full hover:cursor-pointer"> Camera </button>
+
+				</div>
+
+				{/* Add Loading component in this:  (Remove <div>... and replace with the loading component) */}
+				{isLoading ? (
+					<div>
+						<p> Loading... Please Wait </p>
+					</div>
+				) : null}
+
+				{/* Add Error component here */}
+				{error ? (
+					<div>
+						<p> {error.message} </p>
+					</div>
+				) : null}
+
+				<div className="mt-[-1rem] px-20 max-md:px-10">
+					<div className="text-[1.6rem] mb-2">Discription:</div>
+					<div className=" w-[28rem] max-md:w-[20rem] px-6 py-4 h-[16rem] border-2 rounded-md">
+						<div className="flex p-2 text-[1.4rem]">
+
+							<p className="mr-2">Status:</p> { detection && detection ? (
+								<p className={`${ detection.isDetected ? "text-green-400" : "text-red-600" }`}> { detection.isDetected ? "Detected" : "Not Detected"} </p>
+							) : null }
+						</div>
+						<div className="flex p-2 text-[1.4rem]"><p className="mr-2">Crypto Icon:</p><div className="mt-[-0.4rem]">{ detection && detection.icon }</div> </div>
+						<div className="flex p-2 text-[1.4rem]"><p className="mr-2">Crypto Name:</p><p>{ detection && detection.name }</p></div>
+					</div>
 				</div>
 			</div>
 		</Fragment>

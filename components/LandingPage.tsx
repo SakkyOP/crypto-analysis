@@ -7,8 +7,8 @@ const LandingPage = (props: Props) => {
 	return (
 		<Fragment>
 			<div className="h-[50rem] w-[50rem] blur-[150px] bg-[#FF3465] rounded-full absolute bottom-[-30rem] left-[-30rem] max-lg:invisible z-10"></div>
-			<div className="h-[40rem] w-[40rem] blur-[150px] bg-[#FF3465] rounded-full absolute bottom-[-15rem] left-[-30rem] invisible max-lg:visible z-10"></div>
-			<div className="h-[40rem] w-[40rem] blur-[150px] bg-[#1BADFF] rounded-full absolute bottom-[-15rem] right-[-30rem] invisible max-lg:visible z-10"></div>
+			<div className="h-[40rem] w-[40rem] blur-[150px] bg-[#FF3465] rounded-full absolute bottom-[-15rem] left-[-30rem]  max-lg:visible z-10"></div>
+			<div className="h-[40rem] w-[40rem] blur-[150px] bg-[#1BADFF] rounded-full absolute bottom-[-15rem] right-[-30rem]  max-lg:visible z-10"></div>
 			<div className="flex max-lg:flex-col h-screen w-full">
 				<div className="flex flex-col bg-[#0B0E10]  bg-opacity-50 backdrop-blur-sm justify-center items-center w-1/2 max-lg:w-screen max-lg:py-10 max-lg:h-screen z-20">
 					{/* LEFT SIDE BG of Text Section*/}
