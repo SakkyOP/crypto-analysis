@@ -11,6 +11,10 @@
     font-family: 'Poppins';
     src: url('/fonts/Poppins.ttf');
 }
+@font-face {
+    font-family: 'RussoOne';
+    src: url('/fonts/RussoOne.ttf');
+}
 
 body {
     background-color: #1E1E1E;

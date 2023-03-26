@@ -108,7 +108,7 @@ export default function Text() {
 							<div className="text-[1.6rem] mb-2">Discription:</div>
 							<div className=" w-[28rem] max-md:w-[20rem] px-6 py-4 h-[16rem] border-2 rounded-md">
 								<div className="flex p-2 text-[1.4rem]"><p className="mr-2">Status:</p> <p className={detectionColorStatus}>{discriptionStatus}</p></div>
-								<div className="flex p-2 pt-4 text-[1.4rem]"><p className="mr-2">Crypto Icon:</p><div className="mt-[-0.4rem]">{cryptoIconStatus}</div> </div>
+								<div className="flex p-2 text-[1.4rem]"><p className="mr-2">Crypto Icon:</p><div className="mt-[-0.4rem]">{cryptoIconStatus}</div> </div>
 								<div className="flex p-2 text-[1.4rem]"><p className="mr-2">Crypto Name:</p><p>{cyrptoNameStatus}</p></div>
 							</div>
 						</div>

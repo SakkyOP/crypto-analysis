@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         'Rubik': ['Rubik' , 'sans-serif'],
         'Poppins': ['Poppins', 'sans-serif'],
+        'RussoOne': ['RussoOne', 'sans-serif'],
       
       },
       screens: {
