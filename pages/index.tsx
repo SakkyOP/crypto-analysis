@@ -7,7 +7,7 @@ type Props = {}
 
 const Home = (props: Props) => {
   return (
-    <div className='h-screen w-screen relative text-white overflow-hidden max-lg:overflow-visible'>
+    <div className='h-fit w-screen relative text-white overflow-hidden max-lg:overflow-visible'>
       <LandingPage/>
       {/* <Text/>
       <Scan/> */}

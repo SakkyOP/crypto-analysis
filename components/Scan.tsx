@@ -128,13 +128,12 @@ const Scan: React.FC = () => {
 			{/* FIX SIZE and MAKE IT PRESENTABLE */}
 			{/* Display only when opted using Camera Button */}
 			<div className="flex justify-center items-center h-screen text-white">
-				<Stack className="w-auto flex r items-center">
+				<Stack className="w-auto flex items-center">
 					{/* This is the response component return value is mentioned in Docs */}
 					<div className="flex flex-col items-center mb-3 h-[42rem] w-[36rem] max-sm:h-[34rem] max-sm:w-[24rem]">
 						<div className="mt-10 flex flex-col justify-center items-center">
 							<p className="max-md:text-[1.75rem] text-[2rem] mr-2 font-Rubik">Image Analyzer</p>
 							<div className="w-[14rem] md:ml-[-0.5rem] md:w-[16rem] h-2 bg-white ml-[-0.65rem] rounded-md mt-[-0.25rem] mb-3"></div>
-							<div className="flex flex-col justify-center items-center">
 						<div className="flex flex-row justify-center items-center py-4 gap-8">
 							<label className="flex justify-center items-center mt-3 m-2 w-[8rem] h-[2.6rem] bg-[#FF3465] font-Poppins rounded-full hover:cursor-pointer">
 								Upload
@@ -191,7 +190,6 @@ const Scan: React.FC = () => {
 					</div>
 					<canvas style={{ display: "none" }} ref={canvasRef} />
 						</div>
-					</div>
 				</Stack>
 			</div>
 		</Fragment>
