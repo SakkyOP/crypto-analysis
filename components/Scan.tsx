@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment } from "react";
 import { QrReader, QrReaderProps } from "react-qr-reader";
 import decodeQRCodeFromImage from "jsqr";
 import { decode, encode } from "bs58";
@@ -80,8 +80,11 @@ const Scan: React.FC = () => {
 	};
 
 	return (
-		<>
+		<Fragment>
+			{/* FIX SIZE and MAKE IT PRESENTABLE */}
+			<div className="w-40 h-20">
 			<QrReader {...qrReaderProps} />
+			</div>
 			<p>{data}</p>
 			<p>{isDecoded ? "Success" : "Can't decode"}</p>
 			<form>
@@ -94,7 +97,7 @@ const Scan: React.FC = () => {
 					/>
 				</label>
 			</form>
-		</>
+		</Fragment>
 	);
 };
 

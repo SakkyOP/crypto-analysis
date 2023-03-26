@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import useSWR from "swr";
-import { Input, Button, Box, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { validationResponse } from "../pages/api/v1/validate/[public_key]";
 import { detectorResponse } from "../pages/api/v1/detector/[address]";
 import { Cryptocon } from "cryptocons";
