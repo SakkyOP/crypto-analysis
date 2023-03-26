@@ -17,14 +17,14 @@ const LandingPage = (props: Props) => {
 						<div className="max-sm:w-[3rem] max-sm:right-[-2rem] w-[4rem] h-2 bg-white absolute rotate-[120deg] bottom-3 right-[-2.6rem]"></div>
 						<div className="max-sm:w-[3rem] max-sm:right-[-2rem] w-[4rem] h-2 bg-white absolute rotate-[0deg] bottom-1 right-[-2.7rem]"></div>
 					</div>
-					<div className="flex backdrop-blur-sm h-[38rem] w-[36rem] max-md:h-[34rem] max-md:w-[24rem] bg-opacity-50 shadow-2xl rounded-lg flex-col items-center">
+					<div className="flex backdrop-blur-sm h-[50rem] w-[36rem] max-md:h-[34rem] max-md:w-[24rem] bg-opacity-50 shadow-2xl rounded-lg flex-col items-center">
 						{/* IMPORT TEST HERE THEN STYLE THAT TEST COMPONENT IT */}
 						<Text />
 					</div>
 				</div>
-				<div className="w-1/2 flex justify-center items-center max-lg:w-full max-lg:h-screen z-20">
+				<div className="flex flex-col   bg-opacity-50 backdrop-blur-sm justify-center items-center w-1/2 max-lg:w-screen max-lg:py-10 max-lg:h-screen z-20">
 					{/* RIGHT SIDE BG of IMG Section*/}
-					<div className="flex bg-[#0B0E10]  backdrop-blur-sm h-[34rem] w-[28rem] max-md:h-[34rem] max-md:w-[24rem] bg-opacity-50 shadow-2xl rounded-lg flex-col items-center">
+					<div className=" flex items-center mt-[3rem] bg-[#0B0E10] backdrop-blur-sm h-[50rem] w-[36rem] max-md:pb-[12rem] max-md:h-[45.4rem] max-md:w-[24rem] bg-opacity-50 shadow-2xl rounded-lg flex-col">
 						{/* IMPORT TEST HERE THEN STYLE THAT Scan COMPONENT IT */}
 						<Scan />
 					</div>
