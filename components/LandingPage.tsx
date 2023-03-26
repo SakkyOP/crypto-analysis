@@ -22,7 +22,7 @@ const LandingPage = (props: Props) => {
 						<Text />
 					</div>
 				</div>
-				<div className="flex flex-col   bg-opacity-50 backdrop-blur-sm justify-center items-center w-1/2 max-lg:w-screen max-lg:py-10 max-lg:h-screen z-20">
+				<div className="flex flex-col mt-8  bg-opacity-50 backdrop-blur-sm justify-center items-center w-1/2 max-lg:w-screen max-lg:py-10 max-lg:h-screen z-20">
 					{/* RIGHT SIDE BG of IMG Section*/}
 					<div className=" flex items-center mt-[3rem] bg-[#0B0E10] backdrop-blur-sm h-[50rem] w-[36rem] max-md:pb-[12rem] max-md:h-[45.4rem] max-md:w-[24rem] bg-opacity-50 shadow-2xl rounded-lg flex-col">
 						{/* IMPORT TEST HERE THEN STYLE THAT Scan COMPONENT IT */}
