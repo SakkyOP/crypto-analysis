@@ -127,6 +127,10 @@ const Scan: React.FC = () => {
 				imageData!.height
 			);
 			if (qrCode) {
+				const idx = qrCode.data.indexOf(":");
+				if (idx>-1){
+					qrCode.data = qrCode.data.slice(idx+1);
+				}
 				setPublic_key(qrCode.data);
 				setShouldFetch(true);
 			} else {
