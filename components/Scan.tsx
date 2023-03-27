@@ -7,11 +7,22 @@ import { detectorResponse } from "../pages/api/v1/detector/[address]";
 import { Cryptocon, CryptoconProps } from "cryptocons";
 import cryptos from './cryptos.json'
 import { Box, Stack } from "@mui/material";
+import Tesseract from "tesseract.js";
 
 interface detectionStatus {
 	isDetected: boolean,
 	name?: string | "X",
 	icon?: JSX.Element | "X"   // Cryptocon Element
+}
+
+const ocr=(data:HTMLCanvasElement)=>{
+	Tesseract.recognize(
+		data,
+		'eng',
+		{ logger: m => console.log(m) }
+	  ).then(({ data: { text } }) => {
+		console.log(text);
+	  })
 }
 
 const Scan: React.FC = () => {
@@ -51,6 +62,7 @@ const Scan: React.FC = () => {
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const file = event.target.files?.[0];
+		
 		if (file) {
 			const reader = new FileReader();
 			reader.readAsDataURL(file);
@@ -79,6 +91,7 @@ const Scan: React.FC = () => {
 						setShouldFetch(true);
 					} else {
 						console.info("QR code not found");
+						ocr(canvas)
 					}
 				};
 			};
@@ -106,6 +119,7 @@ const Scan: React.FC = () => {
 				setShouldFetch(true);
 			} else {
 				console.info("QR code not found");
+				ocr(canvasRef.current)
 			}
 		}
 	};
