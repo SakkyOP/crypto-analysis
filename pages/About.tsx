@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import Image from 'next/image'
-import hd from '../public/hd.png'
-import sam from '../public/sam.jpg'
 import Link from 'next/link'
 
 type Props = {}
@@ -31,29 +29,29 @@ const About = (props: Props) => {
                         <div className='flex justify-center items-center '>
                             <div className='flex max-md:flex-col'>
                                 <div className='flex items-center flex-col p-8'>
-                                    <Image className='rounded-full w-[12rem]' src={hd} alt='' />
+                                    <img className='rounded-full w-[12rem]' src={'codecrew/harsh.jpg'} alt='' />
                                     <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap '>Harsh Deepanshu</p>
                                 </div>
                                 <div className='flex items-center flex-col p-8'>
-                                    <Image className='rounded-full w-[12rem]' src={sam} alt='' />
+                                    <img className='rounded-full w-[12rem]' src={'codecrew/saksham.jpg'} alt='' />
                                     <p className='text-[1.6rem] max-md:text[1.2rem] text-center mt-2 flex-nowrap'>Saksham Kathuria</p>
                                 </div>
                                 <div className='flex items-center flex-col p-8'>
-                                    <Image className='rounded-full w-[12rem]' src={hd} alt='' />
+                                    <img className='rounded-full w-[12rem]' src={'codecrew/vrinda.jpg'} alt='' />
                                     <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap'>Vrinda Sharma</p>
                                 </div>
                             </div>
                             <div className='flex max-md:flex-col'>
                                 <div className='flex items-center flex-col p-8'>
-                                    <Image className='rounded-full w-[12rem]' src={hd} alt='' />
+                                    <img className='rounded-full w-[12rem]' src={'codecrew/sanya.jpg'} alt='' />
                                     <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap'>Sanya Chawla</p>
                                 </div>
                                 <div className='flex items-center flex-col p-8'>
-                                    <Image className='rounded-full w-[12rem]' src={hd} alt='' />
+                                    <img className='rounded-full w-[12rem]' src={'codecrew/akshat.jpg'} alt='' />
                                     <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap'>Akashat Sharma</p>
                                 </div>
                                 <div className='flex items-center flex-col p-8'>
-                                    <Image className='rounded-full w-[12rem]' src={hd} alt='' />
+                                    <img className='rounded-full w-[12rem]' src={'codecrew/atharva.jpg'} alt='' />
                                     <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap '>Atharva Kumbhar</p>
                                 </div>
                             </div>

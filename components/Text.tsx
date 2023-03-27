@@ -45,12 +45,12 @@ export default function Text() {
 	);
 
 	React.useEffect(() => {
-		if (response && response.cryptocurrency.length > 3) {
+		if (response && response.cryptocurrency.length > 4) {
 			setdiscriptionStatus("Not Detected");
 			setcryptoIconStatus("X")
 			setcyrptoNameStatus("X")
 			setdetectionColorStatus("text-red-600")
-		} else if (response && response.cryptocurrency.length <= 3) {
+		} else if (response && response.cryptocurrency.length <= 4) {
 			setdiscriptionStatus("Detected");
 			setdetectionColorStatus("text-green-400")
 			setcyrptoNameStatus(response.cryptocurrency)
@@ -63,6 +63,8 @@ export default function Text() {
 	}, [response]);
 
 	if (data) {
+		console.log(data);
+		
 		setResponse(data);
 		setShouldFetch(false);
 	} 

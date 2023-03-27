@@ -1,5 +1,4 @@
 import React, { useState, useRef, Fragment } from "react";
-import { QrReader, QrReaderProps } from "react-qr-reader";
 import decodeQRCodeFromImage from "jsqr";
 import useSWR from 'swr'
 import axios from "axios";
@@ -7,7 +6,7 @@ import { detectorResponse } from "../pages/api/v1/detector/[address]";
 import { Cryptocon, CryptoconProps } from "cryptocons";
 import cryptos from './cryptos.json'
 import { Box, Stack } from "@mui/material";
-import Tesseract from "tesseract.js";
+import Tesseract, { createWorker } from "tesseract.js";
 
 interface detectionStatus {
 	isDetected: boolean,
@@ -15,15 +14,9 @@ interface detectionStatus {
 	icon?: JSX.Element | "X"   // Cryptocon Element
 }
 
-const ocr=(data:HTMLCanvasElement)=>{
-	Tesseract.recognize(
-		data,
-		'eng',
-		{ logger: m => console.log(m) }
-	  ).then(({ data: { text } }) => {
-		console.log(text);
-	  })
-}
+// const worker = createWorker({
+// 	logger: m => console.log(m)
+// });
 
 const Scan: React.FC = () => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -35,6 +28,21 @@ const Scan: React.FC = () => {
 	const [detection, setDetection] = useState<detectionStatus | undefined>();
 	const [shouldFetch, setShouldFetch] = useState<boolean>(false)
 	const [public_key, setPublic_key] = useState<string>("");
+	
+	const [inProgress, setInProgress] = useState<boolean>(false);
+
+	const ocr = (data:HTMLCanvasElement) => {
+		Tesseract.recognize(
+			data,
+			'eng',
+			{ logger: m => {setInProgress(!(m.status == "recognizing text" && m.progress == 1)); console.log(m);} }
+		).then(({ data: { text } }) => {
+			setPublic_key(text);
+			console.log(text);
+			
+			setShouldFetch(true);
+		})
+	}
 
 	const fetcher = async (url: string) => {
 		const response: detectorResponse = await axios.get(url).then(res => { return res.data })
@@ -87,6 +95,10 @@ const Scan: React.FC = () => {
 						imageData!.height
 					);
 					if (qrCode) {
+						const idx = qrCode.data.indexOf(":");
+						if (idx>-1){
+							qrCode.data = qrCode.data.slice(idx+1);
+						}
 						setPublic_key(qrCode.data);
 						setShouldFetch(true);
 					} else {
@@ -175,7 +187,7 @@ const Scan: React.FC = () => {
 						}
 
 						{/* Add Loading component in this:  (Remove <div>... and replace with the loading component) */}
-						{isLoading ? (
+						{isLoading || inProgress? (
 							<div>
 								<p> Loading... Please Wait </p>
 							</div>
