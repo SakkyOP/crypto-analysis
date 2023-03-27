@@ -131,7 +131,7 @@ const Scan: React.FC = () => {
 				<Stack className="w-auto flex items-center">
 					{/* This is the response component return value is mentioned in Docs */}
 					<div className="flex flex-col items-center mb-3 h-[42rem] w-[36rem] max-sm:h-[34rem] max-sm:w-[24rem]">
-						<div className="mt-10 flex flex-col justify-center items-center">
+						<div className="mt-[-2rem] sm:mt-2 flex flex-col justify-center items-center">
 							<p className="max-md:text-[1.75rem] text-[2rem] mr-2 font-Rubik">Image Analyzer</p>
 							<div className="w-[14rem] md:ml-[-0.5rem] md:w-[16rem] h-2 bg-white ml-[-0.65rem] rounded-md mt-[-0.25rem] mb-3"></div>
 						<div className="flex flex-row justify-center items-center py-4 gap-8">
@@ -175,7 +175,7 @@ const Scan: React.FC = () => {
 						) : null}
 
 						<div className="mt-[-1rem] px-20 max-md:px-10">
-							<div className="text-[1.6rem] mb-2">Discription:</div>
+							<div className="text-[1.6rem] max-md:mr-[12rem] mr-[20rem] mb-2">Discription:</div>
 							<div className=" w-[28rem] max-md:w-[20rem] px-6 py-4 h-[16rem] border-2 rounded-md">
 								<div className="flex p-2 text-[1.4rem]">
 
