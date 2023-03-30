@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-var axios = require('axios');
-var useSWR = require('swr');
+import axios from "axios";
+import useSWR from "swr";
 import { Box, Stack } from "@mui/material";
 import { validationResponse } from "../pages/api/v1/validate/[public_key]";
 import { detectorResponse } from "../pages/api/v1/detector/[address]";
