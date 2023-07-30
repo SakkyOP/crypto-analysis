@@ -44,11 +44,11 @@ const About = (props: Props) => {
                             <div className='flex max-md:flex-col'>
                                 <div className='flex items-center flex-col p-8'>
                                     <img className='rounded-full w-[12rem]' src={'codecrew/sanya.jpg'} alt='' />
-                                    <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap'>Sanya Chawla</p>
+                                    <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap'>Akashat Sharma</p>
                                 </div>
                                 <div className='flex items-center flex-col p-8'>
                                     <img className='rounded-full w-[12rem]' src={'codecrew/akshat.jpg'} alt='' />
-                                    <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap'>Akashat Sharma</p>
+                                    <p className='text-[1.6rem] max-md:text[1.2rem] mt-2 text-center flex-nowrap'>Sanya Chawla</p>
                                 </div>
                                 <div className='flex items-center flex-col p-8'>
                                     <img className='rounded-full w-[12rem]' src={'codecrew/atharva.jpg'} alt='' />
